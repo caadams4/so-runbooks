@@ -21,7 +21,7 @@ When the pool is stuck, nobody can merge to anything.
 2. Clean: `docker system prune -af --filter "until=72h"`
 3. Runner agent stuck: `sudo systemctl restart ci-runner`.
 4. If a runner is toast, drain it first (`scripts/runner-drain.sh`) then ask
-   Oxlantern to re-image via the provisioning API. Dont just delete it.
+   Oxlantern to re-image via the provisioning API. Don't just delete it.
 
 TODO: write up autoscaling for the pool, ask Priya if its still wanted
 

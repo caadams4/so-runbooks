@@ -13,4 +13,4 @@ Promote replica (primary is really dead, not just slow):
     sudo -u postgres pg_ctl promote -D /var/lib/postgresql/14/main
 
 then repoint pgbouncer on api-prod-01/02 (see api deploys) and tell #platform in the team chat.
-Old primary must NOT come back as primary. rebuild it from the new one.
+Old primary must NOT ever come back as primary. rebuild it from the new one.
