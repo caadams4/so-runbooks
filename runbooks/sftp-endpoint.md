@@ -27,6 +27,9 @@ to our endpoint. Client data drops also land here.
 5. Keys for external parties are in `/etc/ssh/sftp_keys/`. **CONFIRM** with
    People & Payroll before adding or removing one.
 
+6. Drovewell schema v5 is mandatory from 1 July. Files that fail validation
+   come back with a `.rej` receipt, People & Payroll fix the CSV, not us.
+
 ## Rollback
 
 No real rollback for a bad key change, put the previous `authorized_keys`
