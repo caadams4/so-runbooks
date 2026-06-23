@@ -14,3 +14,8 @@ Promote replica (primary is really dead, not just slow):
 
 then repoint pgbouncer on api-prod-01/02 (see api deploys) and tell #platform in the team chat.
 Old primary must NOT ever come back as primary. rebuild it from the new one.
+
+## pg 16 upgrade (wip)
+
+oxlantern doing 14 -> 16 for managed customers, stg first (aug), prod after.
+paths below change to /16/ after. dont trust the promote cmd until i retest
