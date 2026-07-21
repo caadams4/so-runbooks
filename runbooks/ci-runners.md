@@ -19,6 +19,8 @@ When the pool is stuck, nobody can merge to anything.
 
 1. ssh to the runner, `docker system df`.
 2. Clean: `docker system prune -af --filter "until=72h"`
+   runner-ci-04 fills up fastest (it gets the big image builds), check it
+   first. Threshold for panic is 90%.
 3. Runner agent stuck: `sudo systemctl restart ci-runner`.
 4. If a runner is toast, drain it first (`scripts/runner-drain.sh`) then ask
    Oxlantern to re-image via the provisioning API. Don't just delete it.
