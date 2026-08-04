@@ -1,6 +1,6 @@
 # PostgreSQL failover
 
-from pathnote. pg 14 right now, oxlantern says upgrade to 16 is planned for later
+from pathnote. staging (pg-stg-01/02) is on pg 16 since 3 Aug, prod still 14 until the window in Sept
 
 primary: pg-prod-01  replica: pg-prod-02  (10.40.3.21 / 10.40.3.22)
 staging: pg-stg-01 / pg-stg-02
