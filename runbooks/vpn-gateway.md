@@ -38,4 +38,4 @@ Config is in `/etc/wireguard/wg0.conf`, previous copy is `wg0.conf.bak`.
 ## Contacts
 
 Tomas, then Priya. Oxlantern on-call for network-level problems (see
-oxlantern-escalation once it exists).
+oxlantern-escalation).
