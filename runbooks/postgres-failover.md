@@ -1,4 +1,7 @@
-# PostgreSQL failover
+# PostgreSQL failover runbook
+
+Owner: Tomas Ebbersley
+Last reviewed: 2026-08-20
 
 from pathnote. staging (pg-stg-01/02) is on pg 16 since 3 Aug, prod still 14 until the window in Sept
 

@@ -1,7 +1,7 @@
 # Oxlantern escalation runbook
 
 Owner: Tomas Ebbersley
-Last reviewed: never
+Last reviewed: 2026-08-20
 
 ## Purpose
 
