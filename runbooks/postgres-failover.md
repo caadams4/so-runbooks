@@ -3,22 +3,38 @@
 Owner: Tomas Ebbersley
 Last reviewed: 2026-08-20
 
-from pathnote. staging (pg-stg-01/02) is on pg 16 since 3 Aug, prod still 14 until the window in Sept
+## Purpose
 
-primary: pg-prod-01  replica: pg-prod-02  (10.40.3.21 / 10.40.3.22)
-staging: pg-stg-01 / pg-stg-02
+Production PostgreSQL 16 pair: `pg-prod-01` (primary, 10.40.3.21) and
+`pg-prod-02` (replica, 10.40.3.22). Staging pair is `pg-stg-01` / `pg-stg-02`.
+The engagement API, Strikeboard and Ledgerline all read from here. Upgraded
+from 14 to 16 in the window on Sat 5 Sep 2026.
 
-Check replication:
-    psql -h pg-prod-02 -c "select now() - pg_last_xact_replay_timestamp() as lag;"
+## Signals
 
-Promote replica (primary is really dead, not just slow):
-    ssh pg-prod-02
-    sudo -u postgres pg_ctl promote -D /var/lib/postgresql/14/main
+- Gaugeworks `pg-replication-lag` over 30s for 5 min
+- API 5xx with `connection refused` or `could not connect to server`
+- Oxlantern backup job red
 
-then repoint pgbouncer on api-prod-01/02 (see api deploys) and tell #platform in the team chat.
-Old primary must NOT ever come back as primary. rebuild it from the new one.
+## Steps
 
-## pg 16 upgrade (wip)
+1. Check lag: `scripts/pg-replica-lag.sh` (needs `PGHOST_REPLICA`).
+2. Decide: is the primary really dead, or just slow? If slow, do not promote.
+   Get Oxlantern involved first (oxlantern-escalation). **CONFIRM** with
+   Priya before promoting prod.
+3. Promote on `pg-prod-02`:
+   `sudo -u postgres /usr/lib/postgresql/16/bin/pg_ctl promote -D /var/lib/postgresql/16/main`
+4. Repoint pgbouncer on `api-prod-01` and `api-prod-02` to the new primary,
+   `sudo systemctl reload pgbouncer`.
+5. Post in the team chat #platform.
+6. Old primary must never come back as primary. Rebuild it from the new one
+   with `pg_basebackup`.
 
-oxlantern doing 14 -> 16 for managed customers, stg first (aug), prod after.
-paths below change to /16/ after. dont trust the promote cmd until i retest
+## Rollback
+
+There is no un-promote. If you promoted by mistake, treat the old primary as
+the replica to rebuild and fail over properly in a quiet window.
+
+## Contacts
+
+Tomas, Priya. Oxlantern managed PostgreSQL support for storage issues.
