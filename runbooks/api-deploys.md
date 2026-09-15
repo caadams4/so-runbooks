@@ -25,6 +25,9 @@ up until the sunset on 30 Sep.
    `s1 deploy api --env prod --tag vYYYY.MM.N --rolling`.
 4. Watch the 5xx panel for 10 minutes.
 
+5. Rootline (audit logging SDK) is pinned to 2.5.x until PLAT-388 is done.
+   Rootline 3.0 changed the event envelope, do not bump it in a normal release.
+
 ## Rollback
 
 `s1 deploy api --env prod --tag <previous tag> --rolling`. Migrations are
