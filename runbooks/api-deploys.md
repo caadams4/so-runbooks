@@ -7,8 +7,8 @@ Last reviewed: 2026-08-20
 
 How to ship the client-facing engagement API (`api.strikeonecs.io`) with
 `s1 deploy`. Two app hosts, `api-prod-01` and `api-prod-02`, behind the load
-balancer. Serves `/v2/engagements` and `/v2/reports` since v2026.06.1. v1 still
-up until the sunset on 30 Sep.
+balancer. Serves `/v2/engagements` and `/v2/reports` since v2026.06.1. v1 was
+sunset on 30 Sep and removed in v2026.10.1.
 
 ## Signals
 
@@ -20,7 +20,7 @@ up until the sunset on 30 Sep.
 
 1. Tag the release `vYYYY.MM.N` on `git.corp.strikeonecs.io`.
 2. `s1 deploy api --env stg --tag vYYYY.MM.N`, run `scripts/api-health.sh`
-   (checks v2 and v1).
+   (checks v2 only now).
 3. **CONFIRM** with a second engineer, then
    `s1 deploy api --env prod --tag vYYYY.MM.N --rolling`.
 4. Watch the 5xx panel for 10 minutes.
