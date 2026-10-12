@@ -17,7 +17,7 @@ can. This page says how to get them quickly.
 
 ## Steps
 
-1. Check one VM is really down: ping and ssh from `vpn-prod-00`, not your laptop.
+1. Check one VM is really down: ping and ssh from `vpn-prod-01`, not your laptop.
 2. Open an urgent ticket on the Oxlantern portal, include host name, DC hall
    (Slough or Amsterdam) and the time you first noticed.
 3. Phone the Oxlantern NOC for sev 1. Number is in the vault under

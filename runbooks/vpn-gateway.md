@@ -6,8 +6,9 @@ Last reviewed: 2026-08-20
 ## Purpose
 
 WireGuard gateway for staff and vendor access. Public name
-`vpn.strikeonecs.io`, currently one box: `vpn-prod-00` (10.40.1.10) at
-Oxlantern Slough. Mossbarrow and Wickerlume engineers use named vendor
+`vpn.strikeonecs.io`, since 12 Oct 2026 a pair: `vpn-prod-01` (10.40.1.11) and
+`vpn-prod-02` (10.40.1.12), both at Oxlantern Slough. The old single box
+`vpn-prod-00` is powered off but kept until the end of November. Mossbarrow and Wickerlume engineers use named vendor
 accounts, limited to the office-network VLANs. Oxlantern on-call comes in
 over the site-to-site tunnel.
 
@@ -19,12 +20,12 @@ over the site-to-site tunnel.
 
 ## Steps
 
-1. On `vpn-prod-00`: `sudo wg show`. Look at `latest handshake` per peer.
+1. On `vpn-prod-01` and `-02`: `sudo wg show`. Look at `latest handshake` per peer.
    Everything older than ~3 min while the user claims to be connected is dead.
 2. Check udp/51820 is reachable from outside: `scripts/check-vpn-peers.sh`
    (needs `VPN_HOST` set, see `.env.example`).
-3. Restart: `sudo systemctl restart wg-quick@wg0`. Peers reconnect on their own
-   within ~30s.
+3. Restart: `sudo systemctl restart wg-quick@wg0`, one box at a time. Peers
+   reconnect on their own within ~30s. Never restart both together.
 4. New staff profile: `s1 vpn profile --user firstname.lastname --out ./profile.conf`
    and send over a DM, never a channel.
 5. Vendor accounts live in the `vendor` peer group. Do not widen their
@@ -34,6 +35,10 @@ over the site-to-site tunnel.
 
 Config is in `/etc/wireguard/wg0.conf`, previous copy is `wg0.conf.bak`.
 `cp wg0.conf.bak wg0.conf && systemctl restart wg-quick@wg0`.
+
+To back out the whole October move: power `vpn-prod-00` back on and point
+the `vpn.strikeonecs.io` record at 10.40.1.10 (ttl is 60s). Only possible
+until end of Nov.
 
 ## Contacts
 
