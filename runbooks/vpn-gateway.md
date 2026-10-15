@@ -31,6 +31,9 @@ over the site-to-site tunnel.
 5. Vendor accounts live in the `vendor` peer group. Do not widen their
    AllowedIPs, ask Corporate IT first.
 
+6. "Connected but nothing loads" is MTU. New gateways want `MTU = 1380` in
+   the client profile, `s1 vpn profile` sets it, old hand-made profiles dont.
+
 ## Rollback
 
 Config is in `/etc/wireguard/wg0.conf`, previous copy is `wg0.conf.bak`.
