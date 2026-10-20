@@ -28,10 +28,13 @@ over the site-to-site tunnel.
    reconnect on their own within ~30s. Never restart both together.
 4. New staff profile: `s1 vpn profile --user firstname.lastname --out ./profile.conf`
    and send over a DM, never a channel.
-5. Vendor accounts live in the `vendor` peer group. Do not widen their
+5. Bristol 3rd floor moved over the weekend of 17/18 Oct (Mossbarrow did the
+   cabling). If Mossbarrow vendor peers cannot reach the new VLAN, check
+   their AllowedIPs, not the gateway.
+6. Vendor accounts live in the `vendor` peer group. Do not widen their
    AllowedIPs, ask Corporate IT first.
 
-6. "Connected but nothing loads" is MTU. New gateways want `MTU = 1380` in
+7. "Connected but nothing loads" is MTU. New gateways want `MTU = 1380` in
    the client profile, `s1 vpn profile` sets it, old hand-made profiles dont.
 
 ## Rollback
