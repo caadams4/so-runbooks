@@ -1,7 +1,7 @@
 # VPN gateway runbook
 
 Owner: Tomas Ebbersley
-Last reviewed: 2026-08-20
+Last reviewed: 2026-11-06
 
 ## Purpose
 
@@ -48,5 +48,5 @@ until end of Nov.
 
 ## Contacts
 
-Tomas, then Priya. Oxlantern on-call for network-level problems (see
+Tomas, then Priya. Oxlantern on-call for tunnel problems. Oxlantern on-call for network-level problems (see
 oxlantern-escalation).

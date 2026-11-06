@@ -1,7 +1,7 @@
 # PostgreSQL failover runbook
 
 Owner: Tomas Ebbersley
-Last reviewed: 2026-08-20
+Last reviewed: 2026-11-06
 
 ## Purpose
 
