@@ -30,6 +30,9 @@ to our endpoint. Client data drops also land here.
 6. Drovewell schema v5 is mandatory from 1 July. Files that fail validation
    come back with a `.rej` receipt, People & Payroll fix the CSV, not us.
 
+7. November payroll: Drovewell's drop window opens 13 Nov, we drop on the
+   16th. Watch `/srv/sftp/drovewell/in/` for the receipt the same day.
+
 ## Rollback
 
 No real rollback for a bad key change, put the previous `authorized_keys`
